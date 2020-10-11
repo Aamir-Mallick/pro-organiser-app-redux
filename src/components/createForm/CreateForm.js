@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button } from "react-bootstrap";
 import { setBoardDataToDatabase } from "../../services/DatabaseCalls";
-import MyNavbar from "../navbar/MyNavbar";
 
 function CreateForm() {
   const [boardName, setBoardName] = useState("");
@@ -21,7 +20,6 @@ function CreateForm() {
 
   return (
     <>
-      <MyNavbar />
       <div>
         <h3>create board</h3>
         <Form onSubmit={clickHandler}>

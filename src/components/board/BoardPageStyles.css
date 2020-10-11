@@ -1,0 +1,8 @@
+.board-page-heading-delete-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+.board-page-heading-delete-container h2 {
+  font-size: 2rem;
+}

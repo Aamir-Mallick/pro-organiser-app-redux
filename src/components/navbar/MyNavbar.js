@@ -7,17 +7,18 @@ function MyNavbar() {
   return (
     <>
       <Navbar bg="primary" variant="dark">
+        <Navbar.Brand href="/">Pro-Organiser</Navbar.Brand>
         <Container className="justify-content-end">
           <Nav variant="pills">
             <Nav.Item>
-              <Button variant="dark">
-                <Link to="/">Home</Link>
-              </Button>
+              <Link to="/">
+                <Button variant="dark"> Home</Button>
+              </Link>
             </Nav.Item>
             <Nav.Item style={{ marginLeft: "10px" }}>
-              <Button variant="dark">
-                <Link to="/createboard">createboard</Link>
-              </Button>
+              <Link to="/createboard">
+                <Button variant="dark">Create Board</Button>
+              </Link>
             </Nav.Item>
           </Nav>
         </Container>

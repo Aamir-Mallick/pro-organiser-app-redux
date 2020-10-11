@@ -12,9 +12,14 @@ export const setBoardDataToDatabase = (boardName, teamMember, boardType) => {
 };
 
 export const getBoardDataFromDatabse = (dispatch) => {
-  db.ref("user").on("value", (snapshot) => {
-    snapshot.forEach((data) => {
-      dispatch(getBoardData({ id: data.key, ...data.val() }));
+  db.ref("user")
+    .once("value")
+    .then((snapshot) => {
+      snapshot.forEach((data) => {
+        dispatch(getBoardData({ id: data.key, ...data.val() }));
+      });
+    })
+    .then(() => {
+      console.log("Welcome");
     });
-  });
 };

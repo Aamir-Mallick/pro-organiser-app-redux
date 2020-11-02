@@ -1,5 +1,6 @@
 import { fire } from "../firebase/Config";
 import { getBoardData } from "../redux/actions/DatabaseAction";
+import { columnData } from "../redux/actions/GetColumnData";
 
 const db = fire.database();
 
@@ -22,4 +23,28 @@ export const getBoardDataFromDatabse = (dispatch) => {
     .then(() => {
       console.log("Welcome");
     });
+};
+
+export const setColumnToFireBase = (firstNode, column) => {
+  db.ref(`user/${firstNode}`).push({
+    column: column,
+  });
+};
+
+export const getColumnData = (dispatch, id) => {
+  let myDataArray = [];
+  db.ref(`user/${id}`).on("value", (snapshot) => {
+    snapshot.forEach((data) => {
+      myDataArray.push({ id: data.key, columnName: data.val().column });
+    });
+    dispatch(columnData(myDataArray));
+  });
+};
+
+export const deleteColumn = (id1, id2) => {
+  db.ref(`user/${id1}/${id2}`).remove();
+};
+
+export const setCardToDatabase = (id1, id2, dataObj) => {
+  db.ref(`user/${id1}/${id2}`).push(dataObj);
 };

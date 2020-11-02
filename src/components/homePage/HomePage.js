@@ -15,8 +15,11 @@ function HomePage() {
   }, [dispatch]);
 
   const goToMainBoard = (Id, name) => {
-    history.push(`/board${Id}${name}`);
+    localStorage.setItem("Id", Id);
+    localStorage.setItem("name", name);
     dispatch(firstNodeIdAction(Id, name));
+
+    history.push(`/board${Id}${name}`);
   };
 
   return (
